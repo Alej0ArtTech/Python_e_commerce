@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/formulario.css' %}">
+
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'pedido' %}">Agregar pedido</a></li>
+            <li><a href="{% url 'categoria' %}">Agregar categoria</a></li>
+            <li><a href="{% url 'producto' %}">Agregar producto</a></li>
+        </ul>
+    </nav>
+    <h1>Formulario de Pedido</h1>
+    <form method="POST" action="{% url 'guardar_pedido' %}" style="max-width: 400px; margin: 0 auto;">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="cliente">Cliente:     {{ productos }}
+            </label>
+            <input type="text" id="cliente" name="cliente" required>
+        </div>
+        <!-- <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required>
+        </div> -->
+        <div class="form-group">
+            <label for="productos">Productos:</label>
+        <select id="productos" name="productos" multiple>
+            {% for producto in productos %}
+            <option value="{{ producto.id }}">{{ producto.nombre }}</option>
+            {% endfor %}
+        </select>
+    
+        </div>
+        <div class="form-group">
+            <label for="estado">Estado:</label>
+            <input type="text" id="estado" name="estado" required>
+        </div>
+        <button type="submit">Guardar</button>
+    </form>
+
+</body>
+</html>

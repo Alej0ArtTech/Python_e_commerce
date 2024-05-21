@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . import views
+from e_commerce import views
 
 urlpatterns = [
 
@@ -25,6 +25,11 @@ urlpatterns = [
     path('producto/', views.producto, name='producto'),
     path('categoria/', views.categoria, name='categoria'),
     path('pedido/', views.pedido, name='pedido'),
+
+    path('guardar_producto/', views.guardar_producto, name='guardar_producto'),
+    path('guardar_pedido/', views.guardar_pedido, name='guardar_pedido'),
+    path('guardar_categoria/', views.guardar_categoria, name='guardar_categoria'),
+
 ]
 
 

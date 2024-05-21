@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/formulario.css' %}">
+
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'pedido' %}">Agregar pedido</a></li>
+            <li><a href="{% url 'categoria' %}">Agregar categoria</a></li>
+            <li><a href="{% url 'producto' %}">Agregar producto</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
