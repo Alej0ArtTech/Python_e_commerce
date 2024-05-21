@@ -47,6 +47,16 @@ def guardar_pedido(request):
     # Pasar los productos al contexto de la plantilla
     return render(request, 'formulario_pedido.html', {'productos': productos_disponibles})
 
+def busqueda_producto(request):
+    if request.method == 'POST':
+        product_name = request.POST.get('product_name')
+        try:
+            product = Producto.objects.get(nombre=product_name)
+            return render(request, 'index.html', {'product': product})
+        except Producto.DoesNotExist:
+            return render(request, 'index.html', {'error': 'Product not found'})
+    return render(request, 'index.html')
+
 def guardar_categoria(request):
     if request.method == 'POST':
         nombre = request.POST.get('nombre')

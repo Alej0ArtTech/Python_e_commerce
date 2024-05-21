@@ -15,5 +15,28 @@
             <li><a href="{% url 'producto' %}">Agregar producto</a></li>
         </ul>
     </nav>
+    <h1>Busqueda de producto</h1>
+    {% block content %}
+
+<form method="post" style="max-width: 400px; margin: 0 auto;">
+    {% csrf_token %}
+    <label for="product_name">Nombre del Producto:</label>
+    <input type="text" id="product_name" name="product_name" required>
+    <button type="submit">Buscar</button>
+</form>
+
+<div style="max-width: 400px; margin: 0 auto;">
+{% if product %}
+    <h2>Detalles del Producto</h2>
+    <p>Nombre: {{ product.nombre }}</p>
+    <p>Descripción: {{ product.descripcion }}</p>
+    <p>Precio: {{ product.precio }}</p>
+    <p>Stock: {{ product.stock }}</p>
+{% elif error %}
+    <p>{{ error }}</p>
+{% endif %}
+{% endblock %}
+
+</div>
 </body>
 </html>

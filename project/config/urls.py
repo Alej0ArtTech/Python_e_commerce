@@ -21,7 +21,8 @@ from e_commerce import views
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
+    path('', views.busqueda_producto, name='index'),
+    #path('', views.index, name='index'),
     path('producto/', views.producto, name='producto'),
     path('categoria/', views.categoria, name='categoria'),
     path('pedido/', views.pedido, name='pedido'),
