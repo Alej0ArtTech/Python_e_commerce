@@ -8,6 +8,10 @@
 + guarda información en la base de datos
 + mostrar los datos
 
+Desde la pagina index es posible buscar un producto por su nombre (ej. buscando "jarron")
+![image](https://github.com/Alej0ArtTech/Python_e_commerce/assets/139415517/b8bedf2f-adff-4628-b958-3edca67f8466)
+
+
 ## Tablas SQL
 Este proyecto es una E-comerce, tiene definidas tres trablas sql:
 
