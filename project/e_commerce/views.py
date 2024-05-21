@@ -30,7 +30,7 @@ def guardar_producto(request):
 def guardar_pedido(request):
     if request.method == 'POST':
         cliente = request.POST.get('cliente')
-        productos_ids = request.POST.getlist('productos')
+        productos_ids = request.POST.getlist('productos') 
         estado = request.POST.get('estado')
 
         # Obtener los objetos Producto basados en sus IDs
@@ -41,9 +41,11 @@ def guardar_pedido(request):
         pedido.save()
         pedido.producto.set(productos)
 
-
-    productos = Producto.objects.all()
-    return render(request, 'formulario_pedido.html', {'productos': productos})
+    # Obtener todos los productos disponibles
+    productos_disponibles = Producto.objects.all()
+    
+    # Pasar los productos al contexto de la plantilla
+    return render(request, 'formulario_pedido.html', {'productos': productos_disponibles})
 
 def guardar_categoria(request):
     if request.method == 'POST':
@@ -53,4 +55,4 @@ def guardar_categoria(request):
         # Crea una instancia del modelo Categoria y guarda los datos en la base de datos
         categoria = Categoria(nombre=nombre, descripcion=descripcion)
         categoria.save()
-        return render(request, 'formulario_categoria.html')
+        return render(request, 'categoria.html')

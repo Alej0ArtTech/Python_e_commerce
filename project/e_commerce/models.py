@@ -19,7 +19,10 @@ class Categoria(models.Model):
 
 class Pedido(models.Model):
     cliente = models.CharField(max_length=255, default="Sin cliente")
-    apellido = models.CharField(max_length=255, default="Sin apeillido")
-    producto = models.ForeignKey(Producto, on_delete=models.CASCADE, default="Sin producto")
+    apellido = models.CharField(max_length=255, default="Sin apellido")
+    productos = models.ManyToManyField(Producto)  # Cambiado a ManyToManyField para permitir múltiples productos
     fecha_pedido = models.DateTimeField(auto_now_add=True)
     estado = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.cliente} - {self.fecha_pedido}"
