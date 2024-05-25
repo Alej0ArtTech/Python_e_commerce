@@ -20,16 +20,16 @@
     <form method="POST" action="{% url 'guardar_pedido' %}" style="max-width: 400px; margin: 0 auto;">
         {% csrf_token %}
         <div class="form-group">
-            <label for="cliente">Cliente:</label>
-            <input type="text" id="cliente" name="cliente" required>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
         </div>
         <div class="form-group">
-            <label for="productos_seleccionados">Productos:</label>
-            <select id="productos_seleccionados" name="productos_seleccionados" multiple>
-                {% for producto in productos %}
-                    <option value="{{ producto.id }}">{{ producto.nombre }}</option>
-                {% endfor %}
-            </select>
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required>
+        </div>
+        <div class="form-group">
+            <label for="producto">Producto:</label>
+            <input type="text" id="producto" name="producto" required>
         </div>
         <div class="form-group">
             <label for="estado">Estado:</label>

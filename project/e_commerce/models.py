@@ -18,9 +18,9 @@ class Categoria(models.Model):
     descripcion = models.TextField()
 
 class Pedido(models.Model):
-    cliente = models.CharField(max_length=255, default="Sin cliente")
+    nombre = models.CharField(max_length=255, default="Sin cliente")
     apellido = models.CharField(max_length=255, default="Sin apellido")
-    productos = models.ManyToManyField(Producto)  # Cambiado a ManyToManyField para permitir múltiples productos
+    producto = models.CharField(max_length=255, null= False, default="Sin apellido") #ManyToManyField(Producto)  # Cambiado a ManyToManyField para permitir múltiples productos
     fecha_pedido = models.DateTimeField(auto_now_add=True)
     estado = models.CharField(max_length=50)
 

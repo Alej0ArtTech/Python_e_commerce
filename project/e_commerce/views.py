@@ -25,27 +25,22 @@ def guardar_producto(request):
         # Crea una instancia del modelo Producto y guarda los datos en la base de datos
         producto = Producto(nombre=nombre, descripcion=descripcion, precio=precio, stock=stock)
         producto.save()
-        return render(request, 'producto.html')
+        return render(request, 'index.html')
 
 def guardar_pedido(request):
     if request.method == 'POST':
-        cliente = request.POST.get('cliente')
-        productos_ids = request.POST.getlist('productos') 
+        nombre = request.POST.get('nombre')
+        apellido = request.POST.get('apellido')
+        producto = request.POST.get('producto')
         estado = request.POST.get('estado')
 
-        # Obtener los objetos Producto basados en sus IDs
-        productos = Producto.objects.filter(id__in=productos_ids)
-
         # Crear una instancia del modelo Pedido y guardar los datos en la base de datos
-        pedido = Pedido(cliente=cliente, estado=estado)
+        pedido = Pedido(nombre=nombre, apellido=apellido, producto=producto, estado=estado)
         pedido.save()
-        pedido.producto.set(productos)
 
-    # Obtener todos los productos disponibles
-    productos_disponibles = Producto.objects.all()
-    
-    # Pasar los productos al contexto de la plantilla
-    return render(request, 'formulario_pedido.html', {'productos': productos_disponibles})
+    # No hay necesidad de pasar productos al contexto de la plantilla
+    return render(request, 'index.html')
+
 
 def busqueda_producto(request):
     if request.method == 'POST':
@@ -65,4 +60,4 @@ def guardar_categoria(request):
         # Crea una instancia del modelo Categoria y guarda los datos en la base de datos
         categoria = Categoria(nombre=nombre, descripcion=descripcion)
         categoria.save()
-        return render(request, 'categoria.html')
+        return render(request, 'index.html')
